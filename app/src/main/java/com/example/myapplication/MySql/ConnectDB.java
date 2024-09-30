@@ -1,0 +1,104 @@
+package com.example.myapplication.MySql;
+
+import android.os.StrictMode;
+import android.util.Log;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class ConnectDB {
+    private  final String DATABASE="EcommerceDT";
+    private  final String US="sa";
+    private  final String PWD="Hieulsdd123@";
+    private  final String IP="192.168.0.108";
+    private  final String SERVERNAME="QLDETAI";
+    private ResultSet rs;
+    public Connection conn;
+    private  String TAG="ERROR";
+
+    public Connection getConn(){
+        Connection conn1=null;
+        StrictMode.ThreadPolicy smode= new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(smode);
+        String ConnURL=null;
+        try{
+            Class.forName("net.sourceforge.jtds.jdbc.Driver");
+
+            ConnURL="jdbc:jtds:sqlserver://"+IP+";databaseName="+DATABASE+";user=" + US+ ";password=" + PWD + ";";
+            conn1= DriverManager.getConnection(ConnURL);
+            if(conn1!=null){
+                Log.i("SUCCESS", "getConn: connect thanh cong");
+                conn=conn1;
+            }
+        }catch (SQLException e){
+            Log.e(TAG+" Driver", "Không thể tải lớp Driver\n"+e.getMessage() );
+        } catch (ClassNotFoundException e) {
+            Log.e("ERROR2","Xuất hiện vấn đề truy cập trong khi tải! "+ e.getMessage());
+        } catch (Exception e) {
+            Log.e("ERROR3", "Không thể khởi tạo Driver! "+e.getMessage());
+        }
+
+        return conn;
+    }
+    public String Query(String field,String table){
+        String sql= "SELECT "+field+" FROM "+table;
+        Statement st=null;
+        StringBuilder sbl=new StringBuilder();
+        String result=null;
+        try {
+            if(conn!=null){
+                st=conn.createStatement();
+                rs=st.executeQuery(sql);
+                ResultSetMetaData rsmd= rs.getMetaData();;
+                int column=rsmd.getColumnCount();
+                while(rs.next()){
+                    for(int i=1;i<=column;i++){
+                        sbl.append(rs.getString(i)).append("\t");
+                    }
+                    sbl.append("\n");
+                }
+                rs.close();
+                st.close();
+                result=sbl.toString();
+            }
+            conn.close();
+
+        }catch (Exception e){
+            Log.e(TAG,"Xuất hiện vấn đề truy cập trong khi tải!"+ e.getMessage());
+        }
+        return result;
+    }
+    public String Query(String sql) {
+        Statement st = null;
+        StringBuilder sbl = new StringBuilder();
+        String result = null;
+        try {
+            if (conn != null) {
+                st = conn.createStatement();
+                rs = st.executeQuery(sql);
+                ResultSetMetaData rsmd = rs.getMetaData();
+                ;
+                int column = rsmd.getColumnCount();
+                while (rs.next()) {
+                    for (int i = 1; i <= column; i++) {
+                        sbl.append(rs.getString(i)).append("\t");
+                    }
+                    sbl.append("\n");
+                }
+
+                result = sbl.toString();
+                rs.close();
+                st.close();
+                conn.close();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Xuất hiện vấn đề truy cập trong khi tải!" + e.getMessage());
+        }
+
+        return result;
+    }
+}
