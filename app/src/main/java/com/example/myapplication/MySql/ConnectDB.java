@@ -14,8 +14,10 @@ public class ConnectDB {
     private  final String DATABASE="EcommerceDT";
     private  final String US="sa";
     private  final String PWD="Hieulsdd123@";
+    private  final String IP1="192.168.0.107";
     private  final String IP="192.168.0.108";
-    private  final String SERVERNAME="QLDETAI";
+//    private  final String IP="10.30.3.117";
+//    private  final String IP="10.40.31.223";
     private ResultSet rs;
     public Connection conn;
     private  String TAG="ERROR";
@@ -33,6 +35,8 @@ public class ConnectDB {
             if(conn1!=null){
                 Log.i("SUCCESS", "getConn: connect thanh cong");
                 conn=conn1;
+            }else{
+                Log.e("ERROR", "getConn: connect khong  thanh cong toi "+IP);
             }
         }catch (SQLException e){
             Log.e(TAG+" Driver", "Không thể tải lớp Driver\n"+e.getMessage() );
@@ -44,6 +48,8 @@ public class ConnectDB {
 
         return conn;
     }
+
+    //Truy van sql
     public String Query(String field,String table){
         String sql= "SELECT "+field+" FROM "+table;
         Statement st=null;
@@ -72,6 +78,8 @@ public class ConnectDB {
         }
         return result;
     }
+
+    ///Truy van cau lenh
     public String Query(String sql) {
         Statement st = null;
         StringBuilder sbl = new StringBuilder();

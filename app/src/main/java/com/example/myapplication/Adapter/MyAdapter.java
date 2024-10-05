@@ -3,6 +3,7 @@ package com.example.myapplication.Adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,8 +32,8 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycle,parent,false);
-
+        View view;
+                 view =LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycle,parent,false);
 
         return new MyViewHolder(view);
     }
@@ -44,12 +45,17 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             holder.tv.setText(sa.getNameP());
             holder.tv1.setText(String.valueOf(sa.getCost()));
             holder.tv2.setText(String.valueOf(sa.getQuantity()));
-
+            holder.tv3.setVisibility(View.INVISIBLE);
+            if(sa.getQuantity()==0)
+                holder.img1.setVisibility(View.VISIBLE);
+            else
+                holder.img1.setVisibility(View.INVISIBLE);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent i=new Intent((Activity)holder.itemView.getContext(), Activityinforitem.class);
                         i.putExtra("itemObject",sa);
+                        i.putExtra("Id",sa.getIDP());
                     holder.itemView.getContext().startActivity(i);
                 }
             });
@@ -62,20 +68,32 @@ public class MyAdapter  extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        return super.getItemViewType(position);
+        if(mlist.size()!=0){
+            return 1;
+        }else
+        {
+            return 2;
+        }
     }
 
     public class MyViewHolder extends  RecyclerView.ViewHolder{
-       private ImageView img;
-       private TextView tv,tv1,tv2;
+       private ImageView img,img1,img2;
+       private TextView tv,tv1,tv2,tv3;
+
+
 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+//            mapping
             img=itemView.findViewById(R.id.imgitem);
+            img1=itemView.findViewById(R.id.sold);
+
             tv=itemView.findViewById(R.id.titleitem);
             tv1=itemView.findViewById(R.id.costitem);
             tv2=itemView.findViewById(R.id.viewbuyitem);
+            tv3=itemView.findViewById(R.id.quantity);
+
 
         }
     }

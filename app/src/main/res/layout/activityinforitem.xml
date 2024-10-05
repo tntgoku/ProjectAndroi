@@ -46,13 +46,13 @@
 
                 <ImageView
                     android:id="@+id/cartbtn"
-                    android:layout_width="70dp"
-                    android:layout_height="68dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/back" />
+                    app:srcCompat="@drawable/shopping_icon" />
 
                 <TextView
                     android:id="@+id/countitem"
@@ -60,7 +60,6 @@
                     android:layout_height="30dp"
                     android:background="@drawable/cricle"
                     android:text="12"
-
                     android:textAlignment="center"
                     android:textColor="#ffffff"
                     app:layout_constraintBottom_toTopOf="@+id/cartbtn"

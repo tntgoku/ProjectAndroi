@@ -4,6 +4,7 @@ public class Cart {
     private String IDP,DateBuy;
     private  int Quantity;
     private  int Cost;
+    private  int total;
     private  Products sa;
     public Cart() {
     }
@@ -26,6 +27,9 @@ public class Cart {
     public String getQuantity() {
         return String.valueOf(Quantity);
     }
+    public int getIntQuantity(){
+        return Quantity;
+    }
 
     public void setQuantity(int quantity) {
         Quantity = quantity;
@@ -45,5 +49,11 @@ public class Cart {
 
     public void setCost(int cost) {
         Cost = cost;
+    }
+
+    public int getTotal(){
+        int Quantity=Integer.parseInt(getQuantity());
+        total= Quantity*Cost;
+        return total;
     }
 }

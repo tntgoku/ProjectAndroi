@@ -6,13 +6,12 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:elevation="3dp"
-
     >
 
     <ImageView
         android:id="@+id/imgitem"
-        android:layout_width="175dp"
-        android:layout_height="155dp"
+        android:layout_width="105dp"
+        android:layout_height="105dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +39,8 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="17dp"
         android:text="(5)"
         android:textSize="13sp"
         app:layout_constraintStart_toEndOf="@+id/rattingbar"
@@ -65,9 +64,9 @@
         android:id="@+id/tableRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="196dp"
-        android:layout_marginTop="76dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/titleitem">
 
         <TextView
@@ -90,6 +89,7 @@
     </TableRow>
 
     <TableRow
+        android:gravity="center"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginStart="13dp"
@@ -101,13 +101,15 @@
             android:id="@+id/minus"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:textAlignment="center"
             android:text="-" />
 
         <TextView
             android:id="@+id/viewbuyitem"
-            android:layout_width="wrap_content"
+            android:layout_width="26dp"
             android:layout_height="wrap_content"
             android:text="1"
+            android:textAlignment="center"
             android:textSize="14sp"
 
             />
@@ -116,10 +118,42 @@
             android:id="@+id/plus"
             android:layout_width="20sp"
             android:layout_height="20sp"
+            android:textAlignment="center"
+            android:text="+"
             android:layout_marginStart="10sp"
             app:srcCompat="@drawable/ic_launcher_foreground" />
 
 
     </TableRow>
+
+    <ImageView
+        android:id="@+id/sold"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sold_out" />
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="22dp"
+        android:text="@string/quantity"
+        app:layout_constraintStart_toEndOf="@+id/imgitem"
+        app:layout_constraintTop_toBottomOf="@+id/titleitem" />
+
+    <ImageView
+        android:id="@+id/imageView3test"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/tableRow"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

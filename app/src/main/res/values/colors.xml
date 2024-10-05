@@ -5,4 +5,6 @@
     <color name="lightGrey">#EFEFEF</color>
     <color name="Grey">#605F5F</color>
     <color name="gray">#555454</color>
+    <color name="redp">#F44336</color>
+
 </resources>

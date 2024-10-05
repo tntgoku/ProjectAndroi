@@ -10,7 +10,10 @@
     <TableRow
         android:id="@+id/tableRow3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imgback"
@@ -26,37 +29,49 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="2dp"
-            android:layout_weight="1"
             android:padding="4dp"
             android:text="@string/cart"
             android:textSize="17dp"
             android:textStyle="bold" />
-
+        <TextView
+            android:id="@+id/updatecart1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:padding="4dp"
+            android:text="Sua"
+            android:textSize="13sp"
+            />
         <ImageView
             android:id="@+id/imgchat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginStart="200dp"
             android:src="@drawable/chat_icon1" />
 
     </TableRow>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclecart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="410dp"
+        android:layout_height="543dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableRow3" />
 
     <TableRow
+        android:id="@+id/tableRow6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclecart"
+        app:layout_constraintVertical_bias="0.0">
 
 
         <CheckBox
@@ -67,13 +82,15 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+
+            android:layout_marginEnd="8dp">
 
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="70dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginEnd="9dp"
                 android:paddingTop="4dp"
                 android:paddingRight="4dp"
@@ -89,60 +106,57 @@
                 android:id="@+id/totalbill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
+                android:layout_marginEnd="10dp"
+                android:maxWidth="60dp"
                 android:paddingTop="4dp"
-                android:text="đ0"
+                android:text="135000.đ"
                 android:textColor="#FF0000"
-                android:textSize="16dp"
+                android:textSize="13dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView9"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.089" />
 
-            <TableRow
-                android:id="@+id/billdiscount"
+            <TextView
+                android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="10dp"
+                android:paddingTop="4dp"
+                android:paddingRight="4dp"
+                android:text="Tiết kiệm:"
+                android:textSize="12dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView9">
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="116dp"
-                    android:layout_marginTop="5dp"
-                    android:paddingTop="4dp"
-                    android:paddingRight="4dp"
-                    android:text="Tiết kiệm:"
-                    android:textSize="12dp" />
+            <TextView
+                android:id="@+id/totaldiscount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:paddingTop="4dp"
+                android:text="đ0"
+                android:textColor="#FF0000"
+                android:textSize="11dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/totalbill" />
 
-                <TextView
-                    android:id="@+id/totaldiscount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginTop="5dp"
-                    android:paddingTop="4dp"
-                    android:text="đ0"
-                    android:textColor="#FF0000"
-                    android:textSize="11dp" />
-            </TableRow>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/buybtn1"
+            android:layout_width="130dp"
             android:layout_height="match_parent"
             android:background="#FF0000"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:textSize="17sp"
             android:paddingTop="12dp"
             android:text="Mua hàng(0)"
+            android:textAlignment="center"
             android:textColor="#ffffff"
-            />
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
     </TableRow>
 
