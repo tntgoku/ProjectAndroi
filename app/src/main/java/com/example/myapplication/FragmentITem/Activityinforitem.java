@@ -1,5 +1,6 @@
 package com.example.myapplication.FragmentITem;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -7,6 +8,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -138,7 +140,7 @@ public class Activityinforitem extends AppCompatActivity implements eventSystem 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                opendialogView();
             }
         });
 
@@ -192,6 +194,26 @@ public class Activityinforitem extends AppCompatActivity implements eventSystem 
             if(pr.getQuantity()!=0)
                 return true;
             return false;
+    }
+
+    private  void opendialogView(){
+        Dialog dialog=new Dialog(Activityinforitem.this);
+        dialog.setContentView(R.layout.selectbuys);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        ImageView img=dialog.findViewById(R.id.imgproductbuys);
+Log.i("TAG11", String.valueOf(pr.getImg()));
+        img.setImageResource(pr.getImg());
+        TextView t,t1,t2,t3,t4;
+        t=dialog.findViewById(R.id.titleobject2);
+        t1=dialog.findViewById(R.id.quantityitem);
+        t2=dialog.findViewById(R.id.textView5);
+        t3=dialog.findViewById(R.id.minus1);
+        t4=dialog.findViewById(R.id.plus1);
+        t.setText(pr.getNameP());
+        t1.setText(String.valueOf(pr.getQuantity()));
+        int i=1;
+        t2.setText(String.valueOf(i));
+        dialog.show();
     }
 
 }

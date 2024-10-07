@@ -1,5 +1,4 @@
-package com.zlpdemo.merchantDemo.Helper.HMac;
-
+package com.example.myapplication.Zalo.Helper.HMac;
 import java.util.Locale;
 
 public class HexStringUtil {

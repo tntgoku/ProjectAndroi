@@ -1,4 +1,4 @@
-package com.zlpdemo.merchantDemo.Helper.HMac;
+package com.example.myapplication.Zalo.Helper.HMac;
 
 import android.os.Build;
 
@@ -88,6 +88,6 @@ public class HMacUtil {
         if (hmacEncodeBytes == null) {
             return null;
         }
-        return HexStringUtil.byteArrayToHexString(hmacEncodeBytes);
+        return com.example.myapplication.Zalo.Helper.HMac.HexStringUtil.byteArrayToHexString(hmacEncodeBytes);
     }
 }

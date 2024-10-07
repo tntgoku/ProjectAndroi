@@ -21,6 +21,7 @@
 
         <TextView
             android:id="@+id/order"
+            android:layout_marginStart="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/thanhtoan" />
@@ -31,6 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="550dp"
         android:layout_marginTop="15dp"
+        android:padding="10dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableRow4">
@@ -103,6 +105,35 @@
                 android:text="0987654321"
                 android:textSize="17sp" />
         </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:text="@string/prompt_email"
+                android:layout_marginRight="5dp"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editemail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8sp"
+                android:ems="10"
+                android:inputType="text"
+                android:text="test@gmail.com"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listproduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
 
         <TableRow
             android:layout_width="match_parent"
@@ -116,6 +147,10 @@
                 android:layout_marginStart="7dp"
                 android:text="@string/paymentmt"
                 android:textSize="16sp" />
+            <Spinner
+                android:id="@+id/spmethod"
+                android:layout_marginStart="30dp"
+                />
         </TableRow>
 
         <TableRow
@@ -127,8 +162,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginStart="7dp"
                 android:text="@string/delivery"
+                android:textSize="16sp" />
+            <Spinner
+                android:id="@+id/methodr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:textSize="16sp" />
         </TableRow>
 
@@ -143,6 +185,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="7dp"
                 android:text="@string/cost"
+                android:textSize="16sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="15.000"
                 android:textSize="16sp" />
         </TableRow>
 
@@ -175,15 +225,16 @@
         android:layout_width="409dp"
         android:layout_height="84dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
         android:gravity="end"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
 
-            android:layout_marginTop="7dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp">
 
             <TextView
                 android:id="@+id/textView9"
@@ -247,12 +298,13 @@
                     android:textSize="11dp" />
             </TableRow>
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <Button
-            android:layout_margin="10dp"
+            android:id="@+id/orderbill"
             android:layout_width="150dp"
+            android:layout_margin="10dp"
             android:text="Đặt hàng"
-            android:textColor="@color/white"
-            />
+            android:textColor="@color/white" />
 
 
     </TableRow>

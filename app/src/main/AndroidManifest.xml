@@ -25,8 +25,8 @@
             android:name=".Adapter.ImageAdapter"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
+            android:name=".ActivityiTem.MainActivity2"
+            android:exported="true" />
         <activity
             android:name=".Controller.ui.login.LoginActivity"
             android:exported="false"
@@ -34,6 +34,8 @@
         <activity
             android:name=".FragmentITem.Activityinforitem"
             android:exported="false" />
+        <activity android:name=".FragmentITem.Fragment_me" />
+        <activity android:name=".ActivityiTem.OrderCart"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -42,9 +44,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="demozpdk"
+                    android:host="app" />
+            </intent-filter>
         </activity>
-        <activity android:name=".FragmentITem.Fragment_me" />
-        
+
     </application>
 
 </manifest>

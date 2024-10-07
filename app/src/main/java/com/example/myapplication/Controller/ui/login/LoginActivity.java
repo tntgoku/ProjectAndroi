@@ -24,6 +24,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.Controller.IntentKeys;
 import com.example.myapplication.Controller.ui.LoginViewModelFactory;
 import com.example.myapplication.databinding.ActivityLoginBinding;
 
@@ -47,6 +48,9 @@ public class LoginActivity extends AppCompatActivity {
         final Button loginButton = binding.login;
         final ProgressBar loadingProgressBar = binding.loading;
 
+
+        usernameEditText.setText("admin");
+        passwordEditText.setText("123456");
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
             public void onChanged(@Nullable LoginFormState loginFormState) {
@@ -78,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.i("TAG","Adwad");
                     Intent returnIntent = new Intent();
                     returnIntent.putExtra("result",loginResult.getSuccess().getDisplayName().toString());
+                    IntentKeys.setIsuser(true);
                     setResult(Activity.RESULT_OK,returnIntent);
                     finish();
                 }

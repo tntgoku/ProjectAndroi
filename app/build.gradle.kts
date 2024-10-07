@@ -46,7 +46,9 @@ dependencies {
     implementation(files("src\\main\\java\\com\\example\\myapplication\\Vendors\\mysql-connector-j-9.0.0.jar"))
     //Zalo
     implementation(files("src\\main\\java\\com\\example\\myapplication\\Vendors\\zpdk-release-v3.1.aar"))
-
+//    implementation("com.android.tools.build:gradle:3.6.3")
+    implementation("com.squareup.okhttp3:okhttp:4.6.0")
+    implementation("commons-codec:commons-codec:1.14")
 //    MOMO
     implementation(libs.annotation)
     implementation(libs.lifecycle.livedata.ktx)

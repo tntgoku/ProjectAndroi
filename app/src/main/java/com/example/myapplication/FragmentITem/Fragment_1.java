@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.ActivityiTem.OrderCart;
 import com.example.myapplication.Adapter.CartAdapter;
 import com.example.myapplication.Controller.IntentKeys;
 import com.example.myapplication.Controller.eventSystem;
@@ -82,7 +83,9 @@ public class Fragment_1 extends Fragment implements eventSystem {
         a1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                        Intent i=new Intent(getActivity(), OrderCart.class);
+                        i.putExtra("total",a.getText().toString());
+                        startActivity(i);
             }
         });
 

@@ -9,6 +9,16 @@ import java.util.List;
 public class IntentKeys {
     public static final String EXTRA_USERNAME = "USERNAME";
     public static final String EXTRA_RESULT = "result";
+    private static boolean isuser=false;
+
+    public static boolean isIsuser() {
+        return isuser;
+    }
+
+    public static void setIsuser(boolean isuser) {
+        IntentKeys.isuser = isuser;
+    }
+
     public static boolean addProduct(Cart cartfake){
         for(int i=0;i<listcart.size();i++){
             if(listcart.get(i).getIDP().equals(cartfake.getIDP()) ){
@@ -42,4 +52,15 @@ public class IntentKeys {
              result= String.valueOf(sum);
             return result;
     }
+
+    public    static ArrayList<String> methodpayment =new ArrayList<>();
+
+    //TEST
+    public static   void setItem(){
+        methodpayment=new ArrayList<>();
+        methodpayment.add("Thanh toán khi nhận hàng");
+        methodpayment.add("Thanh toán Zalopay");
+        methodpayment.add("Thanh toán MoMo");
+    }
+
 }

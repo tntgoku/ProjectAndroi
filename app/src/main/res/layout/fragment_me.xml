@@ -23,7 +23,7 @@
             >
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/cartus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -40,10 +40,10 @@
                 android:background="#D80C0C"
                 android:text="12"
                 android:textSize="13sp"
-                app:layout_constraintBottom_toTopOf="@+id/imageView8"
-                app:layout_constraintEnd_toEndOf="@+id/imageView8"
-                app:layout_constraintStart_toEndOf="@+id/imageView8"
-                app:layout_constraintTop_toTopOf="@+id/imageView8" />
+                app:layout_constraintBottom_toTopOf="@+id/cartus"
+                app:layout_constraintEnd_toEndOf="@+id/cartus"
+                app:layout_constraintStart_toEndOf="@+id/cartus"
+                app:layout_constraintTop_toTopOf="@+id/cartus" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -52,7 +52,7 @@
             android:layout_height="50dp">
 
             <TextView
-                android:id="@+id/imageView7"
+                android:id="@+id/chatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/chat_icon1"
@@ -68,11 +68,11 @@
                 android:background="#EA0404"
                 android:text="10"
                 android:textSize="13sp"
-                app:layout_constraintBottom_toTopOf="@+id/imageView7"
-                app:layout_constraintEnd_toEndOf="@+id/imageView7"
+                app:layout_constraintBottom_toTopOf="@+id/chatus"
+                app:layout_constraintEnd_toEndOf="@+id/chatus"
                 app:layout_constraintHorizontal_bias="0.428"
-                app:layout_constraintStart_toEndOf="@+id/imageView7"
-                app:layout_constraintTop_toTopOf="@+id/imageView7" />
+                app:layout_constraintStart_toEndOf="@+id/chatus"
+                app:layout_constraintTop_toTopOf="@+id/chatus" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </TableRow>

@@ -22,6 +22,7 @@
     <string name="delivery">"Phí vận chuyển: "</string>
     <string name="totaloder">"Tổng số tiền "</string>
     <string name="curency">"đ"</string>
+    <string name="changeprofile">Sửa hồ sơ</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">"Mật khẩu phải trên 5 ký tự"</string>
     <string name="login_failed">"Tài khoản có thể chưa tồn tài, hoặc mật khẩu đúng!. Vui lòng nhập lại"</string>

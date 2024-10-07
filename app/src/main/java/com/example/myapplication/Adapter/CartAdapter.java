@@ -35,10 +35,20 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View mview= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycle,parent,false);
-
-
-        return new MyViewHolder(mview);
+        View view=null;
+        switch (viewType) {
+            case 0:
+                // Nếu danh sách có phần tử, dùng layout item_recycle
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycle, parent, false);
+                break;
+            case 1:
+                // Nếu danh sách trống, dùng layout itemnothing
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.itemnothing, parent, false);
+                break;
+            default:
+                throw new IllegalArgumentException("Không xác định được viewType: " + viewType);
+        }
+        return new MyViewHolder(view);
     }
     // Method to update visibility of i3
     public void setI3Visibility(boolean visibility) {
@@ -47,7 +57,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
     }
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        if(mlist.size()!=0){
+        if(getItemViewType(position)==0){
             Cart sa=mlist.get(position);
             ConnectDB db=new ConnectDB();
             db.conn= db.getConn();
@@ -121,6 +131,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         return mlist.isEmpty()?0:mlist.size();
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        if (mlist.size() > 0) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+
     public  class MyViewHolder extends RecyclerView.ViewHolder{
         ImageView i1,i2,i3;
         TextView tv1,tv2,tv3,tv4,tv5,tv6;
@@ -129,6 +148,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            if (CartAdapter.this.getItemViewType(getLayoutPosition())==0){
             sa=itemView;
             i1=itemView.findViewById(R.id.imgitem);
             i2=itemView.findViewById(R.id.sold);
@@ -139,6 +159,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             tv4=itemView.findViewById(R.id.quantity);
             tv5=itemView.findViewById(R.id.minus);
             tv6=itemView.findViewById(R.id.plus);
+            }
 
         }
 
