@@ -12,12 +12,10 @@ import java.sql.Statement;
 
 public class ConnectDB {
     private  final String DATABASE="EcommerceDT";
-    private  final String US="sa";
-    private  final String PWD="Hieulsdd123@";
-    private  final String IP1="192.168.0.107";
+    private  final String US="hieu";
+    private  final String PWD="hieulsdd123";
+    private  final String IP1="10.30.2.203";
     private  final String IP="192.168.0.108";
-//    private  final String IP="10.30.3.117";
-//    private  final String IP="10.40.31.223";
     private ResultSet rs;
     public Connection conn;
     private  String TAG="ERROR";
@@ -30,8 +28,8 @@ public class ConnectDB {
         try{
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
 
-            ConnURL="jdbc:jtds:sqlserver://"+IP+";databaseName="+DATABASE+";user=" + US+ ";password=" + PWD + ";";
-            conn1= DriverManager.getConnection(ConnURL);
+            ConnURL="jdbc:jtds:sqlserver://"+IP+";databaseName="+DATABASE;
+            conn1= DriverManager.getConnection(ConnURL,US,PWD);
             if(conn1!=null){
                 Log.i("SUCCESS", "getConn: connect thanh cong");
                 conn=conn1;

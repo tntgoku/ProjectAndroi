@@ -1,6 +1,7 @@
 package com.example.myapplication.FragmentITem;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,10 +18,13 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.myapplication.ActivityiTem.MainActivity2;
+import com.example.myapplication.ActivityiTem.OrderCart;
 import com.example.myapplication.Adapter.imgAdapter;
 import com.example.myapplication.Controller.IntentKeys;
 import  com.example.myapplication.Controller.eventSystem;
@@ -29,6 +33,7 @@ import com.example.myapplication.Object.Products;
 import com.example.myapplication.Object.User;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.ActivityinforitemBinding;
+import com.example.myapplication.databinding.SelectbuysBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Firebase;
@@ -47,12 +52,16 @@ import java.util.List;
 public class Activityinforitem extends AppCompatActivity implements eventSystem {
     private ImageView imgbtn,imgbtn1,imgbtn2;
     private Button btn,btn1,btn2;
+    private  Button dialogbtn,dialogbtn1,dialogbtn2;
     private  View mview;
     private ViewPager2 viewimg;
+    SelectbuysBinding selectbuysBinding;
     ActivityinforitemBinding binding;
     private TextView[] ar;
     Products pr;
     String a=null;
+    private  int quantitybuy=1;
+    private AlertDialog.Builder builder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -198,7 +207,9 @@ public class Activityinforitem extends AppCompatActivity implements eventSystem 
 
     private  void opendialogView(){
         Dialog dialog=new Dialog(Activityinforitem.this);
-        dialog.setContentView(R.layout.selectbuys);
+        selectbuysBinding = SelectbuysBinding.inflate(getLayoutInflater());
+        dialog.setContentView(selectbuysBinding.getRoot());
+
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         ImageView img=dialog.findViewById(R.id.imgproductbuys);
 Log.i("TAG11", String.valueOf(pr.getImg()));
@@ -211,8 +222,52 @@ Log.i("TAG11", String.valueOf(pr.getImg()));
         t4=dialog.findViewById(R.id.plus1);
         t.setText(pr.getNameP());
         t1.setText(String.valueOf(pr.getQuantity()));
-        int i=1;
-        t2.setText(String.valueOf(i));
+        dialogbtn=selectbuysBinding.agree;
+
+
+        dialogbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Activityinforitem.this, OrderCart.class);
+                i.putExtra("quantity",t2.getText().toString());
+                i.putExtra("product",pr);
+                    startActivity(i);
+            }
+        });
+//        QuantityBuy-1
+        t3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(quantitybuy!=1 ){
+                    quantitybuy=quantitybuy-1;
+                    t2.setText(String.valueOf(quantitybuy));
+                }
+            }
+        });
+
+//        QuantityBuy+1
+        t4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(quantitybuy >pr.getQuantity()){
+                    builder=new AlertDialog.Builder(Activityinforitem.this);
+                    builder.setTitle("Thông báo");
+                    builder.setMessage("Số lượng hàng trong kho không đủ!!!!");
+                    builder.setPositiveButton("Oke", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
+                        }
+                    });
+                    builder.show();
+                }else{
+                    quantitybuy=quantitybuy+1;
+                    t2.setText(String.valueOf(quantitybuy));
+                }
+            }
+        });
+        t2.setText(String.valueOf(quantitybuy));
         dialog.show();
     }
 

@@ -1,7 +1,10 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
@@ -17,7 +20,9 @@ import com.example.myapplication.FragmentITem.HomeActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-
+    private static final String AUTHORITY = "com.example.myapplication.Content";
+    private static final String PATH = "products";
+    public static final Uri CONTENT_URI = Uri.parse("content://com.example.myapplication.Content/products");
 BottomNavigationView btngg;
 FrameLayout frl;
     @Override
@@ -59,6 +64,21 @@ FrameLayout frl;
             }
         });
         loadFragment(new HomeActivity());
+//        Cursor cr= getContentResolver().query(CONTENT_URI,null,null,null,null,null);
+//        if (cr != null) {
+//            while (cr.moveToNext()) {
+//                String a, a1, a2;
+//                a = cr.getString(0);
+//                a1 = cr.getString(1);
+//                a2 = cr.getString(2);
+//                Log.d("TAGContentProvide", "ID: " + a + "\nName: " + a1 + "\nDesc: " + a2);
+//            }
+//        }
+//        else {
+//            Log.e("MainActivity", "Cursor is null");
+//        }
+
+
     }
 
     void loadFragment(Fragment fragment){
